@@ -37,8 +37,8 @@ public class Dispair : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "Sacrifice random card from vigilant.\nExhaust";
-        eventScript.button2Txt.text = "Sacrifice <Guard>\nAdd <Young one>\nExhaust";
+        eventScript.button1Txt.text = "Sacrifice random card from vigilant.\nExhaust\nLose Morale";
+        eventScript.button2Txt.text = "Sacrifice <Guard>\nAdd <Young one>\nExhaust\nLose Morale";
         eventScript.button3Txt.text = "P >= 3\nC >= 2\nLeadership\nExhaust";
     }
     void Answer2Update()
@@ -64,7 +64,7 @@ public class Dispair : MonoBehaviour
         int random = Random.Range(0, broker.vigilantDeck.transform.childCount - 1);
         Debug.Log($"{Time.time} <{broker.vigilantDeck.transform.GetChild(random).GetComponent<Unit>().Name}> has been sacrificed.");
         broker.vigilantDeck.transform.GetChild(random).SetParent(broker.UnitsGarbageCan.transform);
-
+        broker.morale--;
         broker.FinishingEventCard(gameObject);
     }
     public void Answer2()
@@ -73,7 +73,7 @@ public class Dispair : MonoBehaviour
         Debug.Log($"{Time.time} Guard destroyed, Young one instantiated into Recovering.");
         Destroy(broker.FindAndReturnUnit(guard, broker.vigilantDeck));
         Instantiate(youngOne, broker.recoveringDeck.transform);
-
+        broker.morale--;
         broker.FinishingEventCard(gameObject);
     }
     public void Answer3()

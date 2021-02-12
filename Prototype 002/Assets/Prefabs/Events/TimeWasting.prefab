@@ -937,7 +937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8426f591a99f55e4e8beff0371fd0732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Time Wasting
+  Name: Low productiviy
   ExhaustableTriggerEvent: 1
   nameText: {fileID: 1403602653745264548}
   button1: {fileID: 1403602653967918260}

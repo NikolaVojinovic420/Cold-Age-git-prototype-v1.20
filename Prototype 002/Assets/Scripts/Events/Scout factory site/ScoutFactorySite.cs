@@ -36,7 +36,7 @@ public class ScoutFactorySite : MonoBehaviour
     void SetTextsOfButtons()
     {
         eventScript.button1Txt.text = "A >= 4\nP >= 3\nSend party to investigate.";
-        eventScript.button2Txt.text = "Pass.\nNo draw.";
+        eventScript.button2Txt.text = "Pass.";
     }
     void Answer1Update()
     {
@@ -57,6 +57,6 @@ public class ScoutFactorySite : MonoBehaviour
     {
         broker.ReturnMarkedToVigilant();
 
-        broker.FinishingEventCardWithoutDraw(gameObject);
+        broker.FinishingEventCard(gameObject);
     }
 }

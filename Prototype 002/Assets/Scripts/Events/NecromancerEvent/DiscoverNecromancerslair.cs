@@ -36,8 +36,8 @@ public class DiscoverNecromancerslair : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "A >= 7\nP >= 3\nC >= 2\nBurn lair to the ground.\nAdd <Cyborg> in recovery\nExhaust";
-        eventScript.button2Txt.text = "Retutn home\nInsert <Necromancer attack>\nExhaust";
+        eventScript.button1Txt.text = "A >= 7\nP >= 3\nC >= 2\nBurn lair to the ground.\nAdd <Cyborg> in recovery\nExhaust\nAdd morale\nLose Noise";
+        eventScript.button2Txt.text = "Return home\nInsert <Necromancer attack>\nExhaust";
     }
     void Answer1Update()
     {
@@ -51,8 +51,9 @@ public class DiscoverNecromancerslair : MonoBehaviour
 
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         broker.InstatiateUnit(cyborg);
-
-        broker.FinishingEventCardWithoutDraw(gameObject);
+        broker.morale++;
+        broker.noise--;
+        broker.FinishingEventCard(gameObject);
     }
     public void Answer2()
     {
@@ -61,6 +62,6 @@ public class DiscoverNecromancerslair : MonoBehaviour
         broker.InstatiateEvent(necromancerAttack);
 
         broker.ReturnMarkedToVigilant();
-        broker.FinishingEventCardWithoutDraw(gameObject);
+        broker.FinishingEventCard(gameObject);
     }
 }

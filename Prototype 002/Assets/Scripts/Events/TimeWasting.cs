@@ -34,7 +34,7 @@ public class TimeWasting : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "C >= 1\nExhaust";
+        eventScript.button1Txt.text = "C >= 1\nExhaust\nLose Noise";
         eventScript.button2Txt.text = "Insert <Dispair>\nExhaust";
     }
 
@@ -47,7 +47,7 @@ public class TimeWasting : MonoBehaviour
     public void Answer1()
     {
 
-
+        broker.noise--;
         broker.SendMarkedIntoRecovering();
         broker.FinishingEventCard(gameObject);
     }

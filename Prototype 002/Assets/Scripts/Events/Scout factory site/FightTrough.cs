@@ -39,7 +39,7 @@ public class FightTrough : MonoBehaviour
     {
         eventScript.button1Txt.text = "A >= 6\nP >= 4\nAdd <Cyborg> into Recovering\nExhaust";
         eventScript.button2Txt.text = "A >= 5\nC >= 2\nAdd <Disfigured> into Recovering\nExhaust";
-        eventScript.button3Txt.text = "No draw.\nExhaust";
+        eventScript.button3Txt.text = "Exhaust\nLose Morale";
     }
     void Answer1Update()
     {
@@ -76,8 +76,8 @@ public class FightTrough : MonoBehaviour
     {
 
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
-
+        broker.morale--;
         broker.SendMarkedIntoRecovering();
-        broker.FinishingEventCardWithoutDraw(gameObject);
+        broker.FinishingEventCard(gameObject);
     }
 }

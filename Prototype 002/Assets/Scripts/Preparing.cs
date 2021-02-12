@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Preparing : MonoBehaviour
 {
     public GameObject Recovering;
+    public AnswerBroker broker;
     public Transform preparingDeck;
     public Transform vigilantDeck;
     public Transform ShuffleDeck;
@@ -18,6 +19,7 @@ public class Preparing : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        broker = GameObject.FindWithTag("AnswerCard").GetComponent<AnswerBroker>();
         text = gameObject.GetComponent<Text>();
         ShufflePreparing();
     }
@@ -70,11 +72,52 @@ public class Preparing : MonoBehaviour
                 for (int i = 0; i < count; i++)
                     recoveringDeck.GetChild(0).SetParent(preparingDeck);
                 ShufflePreparing();
+                //check morale and insert none or 2
+                if (broker.morale >= 12)
+                {
+                    Debug.Log("Morale is 12, double draw");
+                    Debug.Log($"{Time.time} {preparingDeck.GetChild(0).GetComponent<Unit>().Name} inserted into Vigilant");
+                    preparingDeck.GetChild(0).SetParent(vigilantDeck);
+                    if (vigilantDeck.childCount < 10)
+                    {
+                        Debug.Log($"{Time.time} {preparingDeck.GetChild(0).GetComponent<Unit>().Name} inserted into Vigilant");
+                        preparingDeck.GetChild(0).SetParent(vigilantDeck);
+                    }
+                    else Debug.Log("Vigilant is at maximum");
+                    
+                    return;
+                }
+                if(broker.morale <= 3)
+                {
+                    Debug.Log("Morale is less then 3 no draw");
+                        return;
+                }
                 Debug.Log($"{Time.time} {preparingDeck.GetChild(0).GetComponent<Unit>().Name} inserted into Vigilant");
                 preparingDeck.GetChild(0).SetParent(vigilantDeck);
             }
             else
             {
+                //check morale and insert none or 2
+                if (broker.morale >= 12)
+                {
+                    Debug.Log("Morale is 12, double draw");
+                    Debug.Log($"{Time.time} {preparingDeck.GetChild(0).GetComponent<Unit>().Name} inserted into Vigilant");
+                    preparingDeck.GetChild(0).SetParent(vigilantDeck);
+                    if (vigilantDeck.childCount < 10)
+                    {
+                        Debug.Log($"{Time.time} {preparingDeck.GetChild(0).GetComponent<Unit>().Name} inserted into Vigilant");
+                        preparingDeck.GetChild(0).SetParent(vigilantDeck);
+                    }
+                    else Debug.Log("Vigilant is at maximum");
+
+
+                    return;
+                }
+                if (broker.morale <= 3)
+                {
+                    Debug.Log("Morale is less then 3 no draw");
+                    return;
+                }
                 Debug.Log($"{Time.time} {preparingDeck.GetChild(0).GetComponent<Unit>().Name} inserted into Vigilant");
                 preparingDeck.GetChild(0).SetParent(vigilantDeck);
             }

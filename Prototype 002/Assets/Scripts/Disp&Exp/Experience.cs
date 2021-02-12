@@ -44,10 +44,10 @@ public class Experience : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "Sacrifice <Young one>\nAdd <Guard>\nExhaust";
-        eventScript.button2Txt.text = "Sacrifice <Guard>\nAdd <Engineer>\nExhaust";
-        eventScript.button3Txt.text = "Sacrifice <Guard>\nAdd <Tinkerer>\nExhaust";
-        eventScript.button4Txt.text = "Exhaust";
+        eventScript.button1Txt.text = "Sacrifice <Young one>\nAdd <Guard>\nExhaust\nAdd Morale";
+        eventScript.button2Txt.text = "Sacrifice <Guard>\nAdd <Engineer>\nExhaust\nAdd Morale and Noise";
+        eventScript.button3Txt.text = "Sacrifice <Guard>\nAdd <Tinkerer>\nExhaust\nAdd Morale and Noise";
+        eventScript.button4Txt.text = "Exhaust\nDouble Noise lose";
     }
     void Answer1Update()
     {
@@ -75,7 +75,7 @@ public class Experience : MonoBehaviour
         Destroy(broker.FindAndReturnUnit(youngOne, broker.vigilantDeck));
         Instantiate(guard, broker.recoveringDeck.transform);
         Debug.Log($"{Time.time} Young one destroyed, Guard instantiated into Recovering.");
-
+        broker.morale++;
         broker.FinishingEventCard(gameObject);
     }
     public void Answer2()
@@ -85,7 +85,8 @@ public class Experience : MonoBehaviour
         Destroy(broker.FindAndReturnUnit(guard, broker.vigilantDeck));
         Instantiate(engineer, broker.recoveringDeck.transform);
         Debug.Log($"{Time.time} Guard destroyed, Engineer instantiated into Recovering.");
-
+        broker.morale++;
+        broker.noise++;
         broker.FinishingEventCard(gameObject);
     }
     public void Answer3()
@@ -101,6 +102,8 @@ public class Experience : MonoBehaviour
     public void Answer4()
     {
         broker.ReturnMarkedToVigilant();
+        broker.noise--;
+        broker.noise--;
         broker.FinishingEventCard(gameObject);
     }
 

@@ -37,7 +37,7 @@ public class FightForRightPath : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "A >= 5\nInsert <On right path>\nAdd <Experience>\nExhaust";
+        eventScript.button1Txt.text = "A >= 5\nInsert <On right path>\nAdd <Experience>\nExhaust\nAdd Morale";
         eventScript.button2Txt.text = "Insert <Dispair>\nExhaust";
     }
     void Answer1Update()
@@ -51,7 +51,7 @@ public class FightForRightPath : MonoBehaviour
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         broker.InstatiateEvent(onRightpath);
         broker.InstatiateEvent(experience);
-
+        broker.morale++;
         broker.SendMarkedIntoRecovering();
         broker.FinishingEventCard(gameObject);
     }

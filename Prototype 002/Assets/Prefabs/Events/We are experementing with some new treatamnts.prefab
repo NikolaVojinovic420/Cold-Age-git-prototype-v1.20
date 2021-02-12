@@ -937,7 +937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8426f591a99f55e4e8beff0371fd0732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: We are experimenting with some new treatmants
+  Name: New medical research
+  ExhaustableTriggerEvent: 1
   nameText: {fileID: 266049051}
   button1: {fileID: 438174987}
   button1Txt: {fileID: 590822999}
@@ -960,3 +961,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151dba87488a78d4a8270dfe43d50ba3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  eventScript: {fileID: 0}
+  broker: {fileID: 0}

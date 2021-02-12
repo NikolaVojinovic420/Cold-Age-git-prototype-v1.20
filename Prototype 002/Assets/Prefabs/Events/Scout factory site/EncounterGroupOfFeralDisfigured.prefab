@@ -78,6 +78,8 @@ MonoBehaviour:
   trap: {fileID: 2592746794380826751, guid: 69189b3ebc4b75742a89011673e2aabb, type: 3}
   infiltration: {fileID: 5636663349458759588, guid: e12e8d404b842144090009fb0c8c1ce1,
     type: 3}
+  ScoutFacility: {fileID: 8650385532518496415, guid: 737306f5267463f4fae29def16c65390,
+    type: 3}
 --- !u!1 &4563918221441827542
 GameObject:
   m_ObjectHideFlags: 0

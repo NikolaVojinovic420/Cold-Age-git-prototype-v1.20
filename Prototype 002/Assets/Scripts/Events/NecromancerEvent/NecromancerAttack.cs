@@ -36,28 +36,37 @@ public class NecromancerAttack : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "A >= 18\nFight Aggressively\nWin game";
-        eventScript.button2Txt.text = "A >= 10\nFight defensively";
+        eventScript.button1Txt.text = "A >= 8\nFight Aggressively\nExhaust\nAdd Morale and Noise";
+        eventScript.button2Txt.text = "A >= 5\nFight defensively\nLose Morale\nAdd Noise";
         eventScript.button3Txt.text = "Game Over";
     }
     void Answer1Update()
     {
-        if (broker.A >= 18)
+        if (broker.A >= 8)
             eventScript.button1.interactable = true;
         else eventScript.button1.interactable = false;
     }
     void Answer2Update()
     {
-        if (broker.A >= 10)
+        if (broker.A >= 5)
             eventScript.button2.interactable = true;
         else eventScript.button2.interactable = false;
     }
-    public void Answer1() => broker.msgBoxVictory.SetActive(true);
+    public void Answer1()
+    {
+        broker.SendMarkedIntoRecovering();
+        broker.morale++;
+        broker.noise++;
+        gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
+        broker.FinishingEventCard(gameObject);
+
+    }
 
     public void Answer2()
     {
         broker.SendMarkedIntoRecovering();
-
+        broker.morale--;
+        broker.noise++;
         broker.FinishingEventCard(gameObject);
     }
 

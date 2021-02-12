@@ -28,6 +28,7 @@ ScriptsOnlyBuild:
     - NecromancerAttack
     - NecromancerIsAwareOfUs
     - NecromancersScouts
+    - NewRecruits
     - NomadsNearby
     - NowWhat
     - OnRightPath
@@ -39,6 +40,7 @@ ScriptsOnlyBuild:
     - SlaversAttention
     - SumMarked
     - SumVigilant
+    - Throng
     - TimeWasting
     - TreatmantExperimentEvent
     - TriggerEventBroker
@@ -62,9 +64,6 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
-    UnityEditor.UI.dll:
-    - UnityEditor.UI.ButtonEditor
-    - UnityEditor.UI.ImageEditor
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -202,6 +201,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14488}
     - Class: 114
       Script: {instanceID: 14522}
+    - Class: 114
+      Script: {instanceID: 52104}
+    - Class: 114
+      Script: {instanceID: 54572}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -289,7 +292,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: da22e67524dbd1ba46584c1f1146a521
+      Hash: 222f3ea5a8b513bba459127143a619bc
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NowWhat
@@ -505,7 +508,7 @@ ScriptsOnlyBuild:
     className: History
   - hash:
       serializedVersion: 2
-      Hash: ef448616752f00103e1c31d81ceb9f85
+      Hash: 05ea21be87651319085d309b8b5887cb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: EncounterGroupOfFeralDisfigured
@@ -601,7 +604,7 @@ ScriptsOnlyBuild:
     className: TreatmantExperimentEvent
   - hash:
       serializedVersion: 2
-      Hash: 776a2ac66af0831c514e253909a4ab9a
+      Hash: 464945999208fc541f6a90fa62c0b080
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: AnswerBroker
@@ -661,7 +664,7 @@ ScriptsOnlyBuild:
     className: OnRightPath
   - hash:
       serializedVersion: 2
-      Hash: 4ee0bb7296550288bd8efe2b6d663d22
+      Hash: 6ab5ce6926ba16e5cdc826d65bd46f23
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: NecromancersScouts
@@ -709,7 +712,7 @@ ScriptsOnlyBuild:
     className: SignalReceiver
   - hash:
       serializedVersion: 2
-      Hash: 8bf43e668ea14392f4808208973b43c6
+      Hash: 5d0deab3fa64b8a192aead9d1630ce49
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: TriggerEventBroker
@@ -793,7 +796,7 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 70438758508e9b518c713a8d25ae8f80
+      Hash: d6cb09f6a87057d83c9c112271be4cd6
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: IntelGathering
@@ -847,7 +850,7 @@ ScriptsOnlyBuild:
     className: Marked
   - hash:
       serializedVersion: 2
-      Hash: 7bcbb6f3132546ffd16ea980357fb37c
+      Hash: 8645183d2059d87416ee72bf944fac5f
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Preparing
@@ -989,7 +992,19 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 65fb64dd0b4c607a2a817cfe0254d15c
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: NewRecruits
+  - hash:
+      serializedVersion: 2
+      Hash: f20e011bc1dfc8ebad8ac6a6df672d90
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Throng
   platform: 19
   scenePathNames:
   - Assets/Scenes/Table.unity
-  playerPath: C:/Users/Lea/Desktop/ColdAge - Prototype v1.20/ColdAge.exe
+  playerPath: C:/Users/Lea/Desktop/ColdAge - Prototype 12.2.21021 buld No.2/ColdAge.exe

@@ -37,8 +37,8 @@ public class FreeGhoul : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "A >= 5\nP >= 4\nSave Cyborg.\nInsert <Helping hand>\nAdd <Cyborg>\nExhaust";
-        eventScript.button2Txt.text = "Be patient.\nWait for another shoot.";
+        eventScript.button1Txt.text = "A >= 5\nP >= 4\nSave Cyborg.\nInsert <Helping hand>\nAdd <Cyborg>\nExhaust\nAdd Morale and Noise";
+        eventScript.button2Txt.text = "Exhaust\nLose Morale";
     }
     void Answer1Update()
     {
@@ -51,12 +51,15 @@ public class FreeGhoul : MonoBehaviour
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         broker.InstatiateEvent(helpinghand);
         broker.InstatiateUnit(cyborg);
-
+        broker.morale++;
+        broker.noise++;
         broker.SendMarkedIntoRecovering();
         broker.FinishingEventCard(gameObject);
     }
     public void Answer2()
     {
+        gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
+        broker.morale--;
         broker.ReturnMarkedToVigilant(); ;
         broker.FinishingEventCard(gameObject);
     }

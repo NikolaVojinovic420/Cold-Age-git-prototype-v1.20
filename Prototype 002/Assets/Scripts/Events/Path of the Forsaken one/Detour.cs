@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -40,10 +41,10 @@ public class Detour : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "P >= 4\nRegroup.\nInsert <Don't rush>\nExhaust";
-        eventScript.button2Txt.text = "A >= 5\nRush.\nInsert <Now what?>\nExhaust";
+        eventScript.button1Txt.text = "P >= 4\nRegroup.\nInsert <Don't rush>\nExhaust\nLose Noise";
+        eventScript.button2Txt.text = "A >= 5 or engaged <Disfigured>\nRush.\nInsert <Now what?>\nExhaust\nAdd Noise";
         eventScript.button3Txt.text = "A >= 5\nC >= 2\nGo forward.\nInsert <Intel gathering>\nExhaust";
-        eventScript.button4Txt.text = "No draw.\nExhaust";
+        eventScript.button4Txt.text = "Exhaust\nLose Morale";
     }
     void Answer1Update()
     {
@@ -53,10 +54,11 @@ public class Detour : MonoBehaviour
     }
     void Answer2Update()
     {
-        if (broker.A >= 5)
+        if (broker.A >= 5 || DisfiguredEngaged())
             eventScript.button2.interactable = true;
         else eventScript.button2.interactable = false;
-    }
+    }  
+
     void Answer3Update()
     {
         if (broker.A >= 5 && broker.C >= 2)
@@ -67,7 +69,7 @@ public class Detour : MonoBehaviour
     {
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         broker.InstatiateEvent(doNotRush);
-
+        broker.noise--;
         broker.SendMarkedIntoRecovering();
         broker.FinishingEventCard(gameObject);
     }
@@ -75,7 +77,7 @@ public class Detour : MonoBehaviour
     {
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         broker.InstatiateEvent(nowWhat);
-
+        broker.noise++;
         broker.SendMarkedIntoRecovering();
         broker.FinishingEventCard(gameObject);
     }
@@ -91,7 +93,15 @@ public class Detour : MonoBehaviour
     {
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         broker.ReturnMarkedToVigilant();
-        broker.FinishingEventCardWithoutDraw(gameObject);
+        broker.morale--;
+        broker.FinishingEventCard(gameObject);
 
+    }
+    bool DisfiguredEngaged()
+    {
+        for (int i = 0; i < broker.markedDeck.transform.childCount; i++)
+            if (broker.markedDeck.transform.GetChild(i).gameObject.GetComponent<Unit>().Name == "Disfigured")
+                return true;
+        return false;
     }
 }

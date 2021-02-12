@@ -9,6 +9,7 @@ public class NowWhat : MonoBehaviour
 
     public GameObject fightForRightpath;
     public GameObject pathOfForsaken;
+    public GameObject dispair;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,7 @@ public class NowWhat : MonoBehaviour
     {
         eventScript.button1Txt.text = "A >= 4\nP >= 2\nWe lost our way.\nInsert <Path of the Forsaken one>\nExhaust";
         eventScript.button2Txt.text = "C >= 3\nInsert <Fight for right path>\nExhaust";
-        eventScript.button3Txt.text = "No draw.\nExhaust";
+        eventScript.button3Txt.text = "Insert <Dispair>\nExhaust";
     }
     void Answer1Update()
     {
@@ -72,8 +73,8 @@ public class NowWhat : MonoBehaviour
     public void Answer3()
     {
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
-
+        broker.InstatiateEvent(dispair);
         broker.ReturnMarkedToVigilant();
-        broker.FinishingEventCardWithoutDraw(gameObject);
+        broker.FinishingEventCard(gameObject);
     }
 }

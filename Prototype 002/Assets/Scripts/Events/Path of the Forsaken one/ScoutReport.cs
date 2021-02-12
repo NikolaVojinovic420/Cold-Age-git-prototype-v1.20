@@ -38,7 +38,7 @@ public class ScoutReport : MonoBehaviour
     void SetTextsOfButtons()
     {
         eventScript.button1Txt.text = "A >= 6\nC >= 2\nRescue Cyborg.\nInsert <Free ghoul>\nExhaust";
-        eventScript.button2Txt.text = "P >= 2\nC >= 2\ngo for Forsaken\nInsert <On right path>\nExhaust";
+        eventScript.button2Txt.text = "P >= 2\nC >= 2\nGo for Forsaken\nInsert <On right path>\nExhaust\nLose Morale";
         eventScript.button3Txt.text = "Still no word from scouts. Wait next turn.";
     }
     void Answer1Update()
@@ -65,7 +65,7 @@ public class ScoutReport : MonoBehaviour
     {
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         Instantiate(onRightPath, broker.HistoryDeck.transform);
-
+        broker.morale--;
         broker.SendMarkedIntoRecovering();
         broker.FinishingEventCard(gameObject);
     }

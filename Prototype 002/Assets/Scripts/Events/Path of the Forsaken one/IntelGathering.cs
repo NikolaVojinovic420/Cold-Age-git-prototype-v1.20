@@ -9,6 +9,7 @@ public class IntelGathering : MonoBehaviour
 
     public GameObject fightForRightPath;
     public GameObject scoutsReport;
+    public GameObject pathOfTheForsakenOne;
 
     // Start is called before the first frame update
     void Start()
@@ -38,8 +39,8 @@ public class IntelGathering : MonoBehaviour
     void SetTextsOfButtons()
     {
         eventScript.button1Txt.text = "A >= 5\nSkip intel and go forward\nInsert<Fight for right path>\nExhaust";
-        eventScript.button2Txt.text = "P >= 4\nC >= 1\nSend scouts.\nInsert <Scout's report>\nExhaust";
-        eventScript.button3Txt.text = "We lost our wayn\nNo draw\nExhaust";
+        eventScript.button2Txt.text = "P >= 4\nC >= 1\nSend scouts.\nInsert <Scout's report>\nExhaust\nLose Noise";
+        eventScript.button3Txt.text = "We lost our way\nExhaust";
     }
     void Answer1Update()
     {
@@ -65,15 +66,15 @@ public class IntelGathering : MonoBehaviour
     {
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         broker.InstatiateEvent(scoutsReport);
-
+        broker.noise--;
         broker.SendMarkedIntoRecovering();
         broker.FinishingEventCard(gameObject);
     }
     public void Answer3()
     {
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
-
+        broker.InstatiateEvent(pathOfTheForsakenOne);
         broker.ReturnMarkedToVigilant();
-        broker.FinishingEventCardWithoutDraw(gameObject);
+        broker.FinishingEventCard(gameObject);
     }
 }

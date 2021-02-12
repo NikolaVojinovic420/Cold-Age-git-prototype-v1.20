@@ -959,7 +959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8426f591a99f55e4e8beff0371fd0732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Necromancer is aware of us
+  Name: Necromancer got our location
   ExhaustableTriggerEvent: 0
   nameText: {fileID: 4818291327317674168}
   button1: {fileID: 4818291327514450856}

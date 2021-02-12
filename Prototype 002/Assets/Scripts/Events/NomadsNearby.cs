@@ -33,10 +33,10 @@ public class NomadsNearby : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "P>=2\nDraw one extra from preparing";
+        eventScript.button1Txt.text = "P>=2\nDraw one extra from preparing\nAdd noise";
         eventScript.button2Txt.text = "P>=2\nIf two and more in future forsee next two events";
-        eventScript.button3Txt.text = "P>=2\nChose 1 from preparing";
-        eventScript.button4Txt.text = "Leave them alone.\nNo draw next hand.";
+        eventScript.button3Txt.text = "P>=2\nChose 1 from preparing\nAdd Noise";
+        eventScript.button4Txt.text = "Leave them alone.\nLose Noise";
     }
     void AnswerAllUpdate()
     {
@@ -61,8 +61,8 @@ public class NomadsNearby : MonoBehaviour
 
         for (int i = 0; i < 2; i++)
             broker.preparing.GetComponent<Preparing>().DrawToVigilant();
-
-        broker.FinishingEventCardWithoutDraw(gameObject);
+        broker.noise++;
+        broker.FinishingEventCard(gameObject);
     }
     public void Answer2()
     {
@@ -84,14 +84,15 @@ public class NomadsNearby : MonoBehaviour
     public void Answer3()
     {
         broker.SendMarkedIntoRecovering();
-        broker.FinishingEventCardWithoutDraw(gameObject);
-
-        broker.selector.GetComponent<UnitSelector>().SortUnitCards(1);
+        broker.FinishingEventCard(gameObject);
+        broker.noise++;
+        broker.selector.GetComponent<UnitSelector>().SortUnitCards(1, broker.preparingDeck);
     }
     public void Answer4()
     {
+        broker.noise--;
         broker.ReturnMarkedToVigilant();
-        broker.FinishingEventCardWithoutDraw(gameObject);
+        broker.FinishingEventCard(gameObject);
     }
 
 }

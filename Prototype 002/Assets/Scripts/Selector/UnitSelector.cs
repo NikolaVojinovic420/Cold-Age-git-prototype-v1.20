@@ -11,29 +11,29 @@ public class UnitSelector : MonoBehaviour
     public Button button;
     public int pickTimes;
 
-    public void SortUnitCards(int cycles)
+    public void SortUnitCards(int cycles, GameObject deck)
     {
         if (cycles <= 0)
             return;
-        if(cycles > preparingDeck.transform.childCount)
-            cycles = preparingDeck.transform.childCount;
+        if(cycles > deck.transform.childCount)
+            cycles = deck.transform.childCount;
         pickTimes = cycles;
         gameObject.SetActive(true);
         float positionX = gameObject.transform.position.x;
         float positionY = gameObject.transform.position.y;
         
-        if(preparingDeck.transform.childCount <= 0) //if preparing is empty
+        if(deck.transform.childCount <= 0) //if preparing is empty
         {
             gameObject.SetActive(false);
             Debug.Log($"{Time.time} preparing is empty no draw.");
 
         }
-        for (int i = 0; i < preparingDeck.transform.childCount; i++)
+        for (int i = 0; i < deck.transform.childCount; i++)
             Instantiate(button, gameObject.transform);
         int j = 0;
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
-            gameObject.transform.GetChild(i).GetComponentInChildren<Text>().text = $"{i + 1} {preparingDeck.transform.GetChild(i).GetComponent<Unit>().Name}";
+            gameObject.transform.GetChild(i).GetComponentInChildren<Text>().text = $"{i + 1} {deck.transform.GetChild(i).GetComponent<Unit>().Name}";
             gameObject.transform.GetChild(i).transform.position = new Vector2(positionX + j * 200, positionY);
             j ++;
             if (i != 0 && i % 4 == 0) //new row

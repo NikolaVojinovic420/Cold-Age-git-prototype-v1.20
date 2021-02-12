@@ -35,8 +35,8 @@ public class SlaversAttention : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "A >= 9\nGive them hell!\nExhaust.";
-        eventScript.button2Txt.text = "A >= 5\nSkirmish. Kill random marked <Unit>.\nExhaust.";
+        eventScript.button1Txt.text = "A >= 9\nGive them hell!\nExhaust.\nAdd Morale";
+        eventScript.button2Txt.text = "A >= 5\nSkirmish. Kill random marked <Unit>.\nExhaust.\nLose Morale";
         eventScript.button3Txt.text = "Submit";
     }
 
@@ -56,7 +56,7 @@ public class SlaversAttention : MonoBehaviour
     public void Answer1()
     {
         broker.SendMarkedIntoRecovering();
-
+        broker.morale++;
         broker.FinishingEventCard(gameObject);
     }
     public void Answer2()
@@ -64,7 +64,7 @@ public class SlaversAttention : MonoBehaviour
         int random = Random.Range(0, broker.markedDeck.transform.childCount - 1);
         Debug.Log($"{Time.time} <{broker.markedDeck.transform.GetChild(random).GetComponent<Unit>().Name}> unit has been killed.");
         broker.markedDeck.transform.GetChild(random).SetParent(broker.UnitsGarbageCan.transform);
-
+        broker.morale--;
         broker.SendMarkedIntoRecovering();
 
         broker.FinishingEventCard(gameObject);

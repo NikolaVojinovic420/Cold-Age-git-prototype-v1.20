@@ -31,13 +31,14 @@ public class WeWentIntoTrap : MonoBehaviour
     {
         eventScript.button1.gameObject.SetActive(true);
         eventScript.button2.gameObject.SetActive(true);
-        eventScript.button3.gameObject.SetActive(false);
+        eventScript.button3.gameObject.SetActive(true);
         eventScript.button4.gameObject.SetActive(false);
     }
     void SetTextsOfButtons()
     {
         eventScript.button1Txt.text = "C >= 2\nAdd <Experience> into History\nExhaust";
         eventScript.button2Txt.text = "Insert <Dispair> into History.\nExhaust";
+        eventScript.button3Txt.text = "Lose double Morale\nExhaust";
     }
     void Answer1Update()
     {
@@ -61,6 +62,14 @@ public class WeWentIntoTrap : MonoBehaviour
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         broker.InstatiateEvent(dispair);
 
+        broker.FinishingEventCard(gameObject);
+    }
+    public void Answer3()
+    {
+        broker.ReturnMarkedToVigilant();
+        gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
+        broker.morale--;
+        broker.morale--;
         broker.FinishingEventCard(gameObject);
     }
 }

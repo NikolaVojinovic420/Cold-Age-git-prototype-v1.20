@@ -31,13 +31,13 @@ public class InfiltrationWasSucces : MonoBehaviour
     {
         eventScript.button1.gameObject.SetActive(true);
         eventScript.button2.gameObject.SetActive(true);
-        eventScript.button3.gameObject.SetActive(false);
+        eventScript.button3.gameObject.SetActive(true);
         eventScript.button4.gameObject.SetActive(false);
     }
     void SetTextsOfButtons()
     {
         eventScript.button1Txt.text = "P >= 5 or C >= 3\nAdd TWO <Experience> into History\nExhaust";
-        eventScript.button2Txt.text = "Insert <Dispair> into History.\nExhaust";
+        eventScript.button2Txt.text = "Insert TWO <Dispair> into History.\nExhaust";
     }
     void Answer1Update()
     {
@@ -61,7 +61,9 @@ public class InfiltrationWasSucces : MonoBehaviour
 
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         broker.InstatiateEvent(dispair);
+        broker.InstatiateEvent(dispair);
 
         broker.FinishingEventCard(gameObject);
     }
+    
 }

@@ -41,7 +41,7 @@ public class Discipline : MonoBehaviour
     {
         eventScript.button1Txt.text = "C >= 2\nDraw <Cyborg>";
         eventScript.button2Txt.text = "P >= 3\nDraw <Disfigured>";
-        eventScript.button3Txt.text = "A >= 4\nP >= 2\nC >= 1\nGo trough.";
+        eventScript.button3Txt.text = "A >= 4\nP >= 2\nC >= 1\nGo trough.\nAdd Morale";
         eventScript.button4Txt.text = "Degrading discipline\nInsert <Despair> into History";
     }
     void Answer1Update()
@@ -91,7 +91,7 @@ public class Discipline : MonoBehaviour
     public void Answer3()
     {
         broker.SendMarkedIntoRecovering();
-        
+        broker.morale++;
         broker.FinishingEventCard(gameObject);
     }
     public void Answer4()

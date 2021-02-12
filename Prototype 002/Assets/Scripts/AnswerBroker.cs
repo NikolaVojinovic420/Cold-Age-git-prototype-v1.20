@@ -25,9 +25,13 @@ public class AnswerBroker : MonoBehaviour
     public GameObject UnitsGarbageCan;
     public GameObject msgBoxGameOver;
     public GameObject msgBoxVictory;
+    public GameObject moraleTxt;
+    public GameObject noiseTxt;
     public int A;
     public int P;
     public int C;
+    public int morale = 6;
+    public int noise = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +42,7 @@ public class AnswerBroker : MonoBehaviour
     void FixedUpdate()
     {
         TrackAspectValues();
+        ClampMoraleAndNoise();
     }
 
 
@@ -54,11 +59,6 @@ public class AnswerBroker : MonoBehaviour
     {
         PutEventInHistoryOrExhaust(card);
         Future.GetComponent<Future>().DrawNextEventCard();
-    }
-    public void FinishingEventCardWithoutDraw(GameObject card)
-    {
-        PutEventInHistoryOrExhaust(card); //just exhaust this event 
-        Future.GetComponent<Future>().DrawNextEventCardWithoutVigilant(); //just pull event without unit to prevent prevent next draw
     }
 
     public void PutEventInHistoryOrExhaust(GameObject card)
@@ -115,6 +115,25 @@ public class AnswerBroker : MonoBehaviour
     {
         GameObject newCard = Instantiate(unitCard, recoveringDeck.transform);
         Debug.Log($"{Time.time} *{newCard.GetComponent<Unit>().Name}* has been instatiated into Recovering");
+    }
+    public void InstatiateUnitOnLocation(GameObject unitCard, Transform location)
+    {
+        GameObject newCard = Instantiate(unitCard, location);
+        Debug.Log($"{Time.time} *{newCard.GetComponent<Unit>().Name}* has been instatiated into <{location.gameObject.name}>");
+    }
+    void ClampMoraleAndNoise()
+    {
+        if (morale < 0)
+            morale = 0;
+        if (noise < 0)
+            noise = 0;
+        if (morale > 12)
+            morale = 12;
+        if (noise > 10)
+            noise = 10;
+        moraleTxt.GetComponent<Text>().text = $"{morale}";
+        noiseTxt.GetComponent<Text>().text = $"{noise}";
+
     }
 
 }

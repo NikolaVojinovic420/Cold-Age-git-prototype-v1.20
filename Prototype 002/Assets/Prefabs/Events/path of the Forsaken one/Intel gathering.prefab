@@ -987,3 +987,5 @@ MonoBehaviour:
     type: 3}
   scoutsReport: {fileID: 2496134134155568650, guid: 92c179b653bf3724caa07ececc10d12d,
     type: 3}
+  pathOfTheForsakenOne: {fileID: 6647811700150619966, guid: e50d3839aa87a7244b19b9a68ddc6514,
+    type: 3}

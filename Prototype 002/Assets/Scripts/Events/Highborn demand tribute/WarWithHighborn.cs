@@ -37,8 +37,8 @@ public class WarWithHighborn : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "Try diplomacy.\nSacrifice first 2 from marked.\nInsert <Highborn demand tribue>.\nExhaust event.";
-        eventScript.button2Txt.text = "A >= 6\nKeep fighting.";
+        eventScript.button1Txt.text = "Try diplomacy.\nSacrifice first 2 from marked.\nInsert <Highborn demand tribue>.\nExhaust event.\nLose Noise and Morale";
+        eventScript.button2Txt.text = "A >= 6\nKeep fighting.\nAdd Noise";
         eventScript.button3Txt.text = "A >= 12\nP>=5\nC>=3\nWe will crush you... TO GLORY!\nWin game.";
         eventScript.button4Txt.text = "Submit";
     }
@@ -75,7 +75,8 @@ public class WarWithHighborn : MonoBehaviour
 
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         broker.InstatiateEvent(HighbornDemandTribute);
-
+        broker.morale--;
+        broker.noise--;
         broker.ReturnMarkedToVigilant();
 
         broker.FinishingEventCard(gameObject);
@@ -84,7 +85,7 @@ public class WarWithHighborn : MonoBehaviour
     public void Answer2()
     {
         broker.SendMarkedIntoRecovering();
-
+        broker.noise++;
         broker.FinishingEventCard(gameObject);
     }
 

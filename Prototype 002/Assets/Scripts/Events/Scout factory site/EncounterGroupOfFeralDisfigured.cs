@@ -10,6 +10,7 @@ public class EncounterGroupOfFeralDisfigured : MonoBehaviour
     public GameObject fightTrough;
     public GameObject trap;
     public GameObject infiltration;
+    public GameObject ScoutFacility;
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +40,10 @@ public class EncounterGroupOfFeralDisfigured : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "Mark 3 units.\nIf A highest\nInsert <Fight trough> into History\nExhaust";
-        eventScript.button2Txt.text = "Mark 3 units.\nIf P highest\nInsert <We went into a trap> into History\nExhaust";
-        eventScript.button3Txt.text = "Mark 3 units or TWO <Disfigured>.\nIf C highest or TWO <Disfigured> marked\n Insert <Infiltration successed> into History\nExhaust";
-        eventScript.button4Txt.text = "No draw.\nExhaust";
+        eventScript.button1Txt.text = "Mark 3 units.\nIf A highest\nInsert <Fight trough> into History\nExhaust\nAdd Noise";
+        eventScript.button2Txt.text = "Mark 3 units.\nIf P highest\nInsert <We went into a trap> into History\nExhaust\nLose Morale";
+        eventScript.button3Txt.text = "Mark 3 units or TWO <Disfigured>.\nIf C highest or TWO <Disfigured> marked\n Insert <Infiltration successed> into History\nExhaust\nLose noise";
+        eventScript.button4Txt.text = "Return to <Scout factory site>\nLose Morale";
     }
     void Answer1Update()
     {
@@ -66,7 +67,7 @@ public class EncounterGroupOfFeralDisfigured : MonoBehaviour
     {
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         broker.InstatiateEvent(fightTrough);
-
+        broker.noise++;
         broker.SendMarkedIntoRecovering();
         broker.FinishingEventCard(gameObject);
     }
@@ -74,7 +75,7 @@ public class EncounterGroupOfFeralDisfigured : MonoBehaviour
     {
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         broker.InstatiateEvent(trap);
-
+        broker.morale--;
         broker.SendMarkedIntoRecovering();
         broker.FinishingEventCard(gameObject);
     }
@@ -82,16 +83,17 @@ public class EncounterGroupOfFeralDisfigured : MonoBehaviour
     {
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
         broker.InstatiateEvent(infiltration);
-
+        broker.noise--;
         broker.SendMarkedIntoRecovering();
         broker.FinishingEventCard(gameObject);
     }
     public void Answer4()
     {
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
-
+        broker.InstatiateEvent(ScoutFacility);
+        broker.morale--;
         broker.ReturnMarkedToVigilant();
-        broker.FinishingEventCardWithoutDraw(gameObject);
+        broker.FinishingEventCard(gameObject);
     }
     bool ReturnHighestA()
     {       

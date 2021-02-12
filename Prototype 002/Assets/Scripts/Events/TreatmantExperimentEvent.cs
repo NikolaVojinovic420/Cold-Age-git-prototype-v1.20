@@ -35,8 +35,8 @@ public class TreatmantExperimentEvent : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "C >= 2\nChose TWO from Preparing";
-        eventScript.button2Txt.text = "Failed experiment! Discard 2 random card from vigilant";
+        eventScript.button1Txt.text = "C >= 2\nChose one from Recovering\nAdd Noise\nExhaust";
+        eventScript.button2Txt.text = "Failed experiment! Discard 2 random cards from vigilant\nLose Morale\nExhaust";
     } 
 
     void Answer1Update()
@@ -49,9 +49,9 @@ public class TreatmantExperimentEvent : MonoBehaviour
     public void Answer1()
     {
         broker.SendMarkedIntoRecovering();
-        broker.FinishingEventCardWithoutDraw(gameObject);
-
-        broker.selector.GetComponent<UnitSelector>().SortUnitCards(2);//pick firs   
+        broker.FinishingEventCard(gameObject);
+        broker.noise++;
+        broker.selector.GetComponent<UnitSelector>().SortUnitCards(1, broker.recoveringDeck);//pick firs   
     }
    
     public void Answer2()
@@ -73,7 +73,7 @@ public class TreatmantExperimentEvent : MonoBehaviour
             Debug.Log($"{Time.time} {broker.vigilantDeck.transform.GetChild(random).GetComponent<Unit>().Name}> discarded!");
 
         }
-
+        broker.morale--;
         broker.FinishingEventCard(gameObject);
     }
 

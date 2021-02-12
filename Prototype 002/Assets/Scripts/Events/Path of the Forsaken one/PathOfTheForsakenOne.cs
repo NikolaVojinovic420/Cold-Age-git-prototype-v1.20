@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,16 +38,17 @@ public class PathOfTheForsakenOne : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "A >= 8\nP >= 4\nC >= 3\nSend big campaign\nInsert <On right path>\nExhaust";
+        eventScript.button1Txt.text = "<Forsaken> engaged and A >= 6\nHive mind\nInsert <On right path>\nExhaust";
         eventScript.button2Txt.text = "A >= 6\nP >= 3\nSend campaign\nInsert <Detour>\nExhaust";
-        eventScript.button3Txt.text = "Those are just rumors.\nNo draw.\nExhaust";
+        eventScript.button3Txt.text = "Those are just rumors.\nExhaust";
     }
     void Answer1Update()
     {
-        if (broker.A >= 8 && broker.P >= 4 && broker.C >= 3)
+        if (broker.A >= 6 && ForsakenEngaged())
             eventScript.button1.interactable = true;
         else eventScript.button1.interactable = false;
     }
+
     void Answer2Update()
     {
         if (broker.A >= 6 && broker.P >= 3)
@@ -74,6 +76,13 @@ public class PathOfTheForsakenOne : MonoBehaviour
         gameObject.GetComponent<Event>().ExhaustableTriggerEvent = true; //exhaust event
 
         broker.ReturnMarkedToVigilant();
-        broker.FinishingEventCardWithoutDraw(gameObject);
+        broker.FinishingEventCard(gameObject);
+    }
+     bool ForsakenEngaged()
+    {
+        for (int i = 0; i < broker.markedDeck.transform.childCount; i++)
+            if (broker.markedDeck.transform.GetChild(i).gameObject.GetComponent<Unit>().Name == "Forsaken")
+                return true;
+        return false;
     }
 }

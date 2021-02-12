@@ -77,6 +77,7 @@ MonoBehaviour:
     type: 3}
   pathOfForsaken: {fileID: 6647811700150619966, guid: e50d3839aa87a7244b19b9a68ddc6514,
     type: 3}
+  dispair: {fileID: 8452305965465141617, guid: e50af686f62968b439c9e3aa6f51431a, type: 3}
 --- !u!1 &2925046797255525021
 GameObject:
   m_ObjectHideFlags: 0
