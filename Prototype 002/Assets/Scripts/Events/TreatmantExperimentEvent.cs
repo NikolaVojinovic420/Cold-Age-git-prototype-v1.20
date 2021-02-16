@@ -48,10 +48,10 @@ public class TreatmantExperimentEvent : MonoBehaviour
 
     public void Answer1()
     {
+        broker.selector.GetComponent<UnitSelector>().SortUnitCards(1, broker.recoveringDeck);//pick first
         broker.SendMarkedIntoRecovering();
         broker.FinishingEventCard(gameObject);
         broker.noise++;
-        broker.selector.GetComponent<UnitSelector>().SortUnitCards(1, broker.recoveringDeck);//pick firs   
     }
    
     public void Answer2()

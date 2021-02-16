@@ -5,23 +5,22 @@ using UnityEngine.UI;
 
 public class ButtonSelectorPick : MonoBehaviour
 {
-    public GameObject preparingDeck;
     public GameObject vigilantDeck;
+    public GameObject universalDeck;
     GameObject unitSelector;
     // Start is called before the first frame update
     void Start()
     {
-        unitSelector = gameObject.transform.parent.gameObject;
-        preparingDeck = unitSelector.GetComponent<UnitSelector>().preparingDeck;
+        unitSelector = gameObject.transform.parent.gameObject;   
         vigilantDeck = unitSelector.GetComponent<UnitSelector>().vigilantDeck;
     }
 
     public void InsertIntoVigilant()
     {
         string stringNumber = $"{gameObject.GetComponentInChildren<Text>().text}";
-        Debug.Log($"{Time.time} *{preparingDeck.transform.GetChild(int.Parse(ReturnStringNumber(stringNumber)) - 1).gameObject.GetComponent<Unit>().Name}* " +
-            $"is picked and moved from Preparing to Vigilant.");
-        preparingDeck.transform.GetChild(int.Parse(ReturnStringNumber(stringNumber))-1).SetParent(vigilantDeck.transform);
+        Debug.Log($"{Time.time} *{universalDeck.transform.GetChild(int.Parse(ReturnStringNumber(stringNumber)) - 1).gameObject.GetComponent<Unit>().Name}* " +
+            $"is picked and moved from {universalDeck.name} to Vigilant.");
+        universalDeck.transform.GetChild(int.Parse(ReturnStringNumber(stringNumber))-1).SetParent(vigilantDeck.transform);
 
         unitSelector.GetComponent<UnitSelector>().pickTimes--;
        

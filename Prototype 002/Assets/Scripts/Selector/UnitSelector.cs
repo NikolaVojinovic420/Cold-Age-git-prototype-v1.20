@@ -25,11 +25,14 @@ public class UnitSelector : MonoBehaviour
         if(deck.transform.childCount <= 0) //if preparing is empty
         {
             gameObject.SetActive(false);
-            Debug.Log($"{Time.time} preparing is empty no draw.");
+            Debug.Log($"{Time.time} {deck.name} is empty no draw.");
 
         }
         for (int i = 0; i < deck.transform.childCount; i++)
+        {
             Instantiate(button, gameObject.transform);
+            gameObject.transform.GetChild(gameObject.transform.childCount - 1).gameObject.GetComponent<ButtonSelectorPick>().universalDeck = deck;
+        }
         int j = 0;
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {

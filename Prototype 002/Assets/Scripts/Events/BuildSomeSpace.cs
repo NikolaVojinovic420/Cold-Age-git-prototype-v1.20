@@ -36,7 +36,7 @@ public class BuildSomeSpace : MonoBehaviour
     void SetTextsOfButtons()
     {
         eventScript.button1Txt.text = "P >= 3\nDraw two extra from preparing\nAdd Noise";
-        eventScript.button2Txt.text = "Discard random card from vigilant";
+        eventScript.button2Txt.text = "Discard random card from vigilant if practical < 6";
     }
 
     void Answer1Update()
