@@ -35,13 +35,13 @@ public class TreatmantExperimentEvent : MonoBehaviour
     }
     void SetTextsOfButtons()
     {
-        eventScript.button1Txt.text = "C >= 2\nChose one from Recovering\nAdd Noise\nExhaust";
+        eventScript.button1Txt.text = "C >= 2\nChoose one from Recovering\nAdd Noise\nExhaust";
         eventScript.button2Txt.text = "Failed experiment! Discard 2 random cards from vigilant\nLose Morale\nExhaust";
     } 
 
     void Answer1Update()
     {
-        if (broker.C >= 2)
+        if (broker.C >= 2 && broker.recoveringDeck.transform.childCount > 0)
             eventScript.button1.interactable = true;
         else eventScript.button1.interactable = false;
     }

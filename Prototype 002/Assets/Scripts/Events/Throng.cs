@@ -37,7 +37,7 @@ public class Throng : MonoBehaviour
     void SetTextsOfButtons()
     {
         eventScript.button1Txt.text = "Purge them!\nA >= 12\nAdd morale\nExhaust";
-        eventScript.button2Txt.text = "urge them!\nA >= 12 and 2 <Disfigured> engaged\nInsert <Disfigured> into Preparing\nAdd morale\nExhaust";
+        eventScript.button2Txt.text = "Purge them!\nA >= 12 and 2 <Disfigured> engaged\nInsert <Disfigured> into Preparing\nAdd morale\nExhaust";
         eventScript.button3Txt.text = "C >= 3\nP >= 2\nDrown them\nLose Noise\nExhaust";
         eventScript.button4Txt.text = "Lose";
     }
@@ -45,6 +45,8 @@ public class Throng : MonoBehaviour
     {
         if (broker.A >= 12)
             eventScript.button1.interactable = true;
+        else
+            eventScript.button1.interactable = false;
     }
     void Answer2Update()
     {
@@ -54,6 +56,9 @@ public class Throng : MonoBehaviour
                 j++;
         if (broker.A >= 12 && j>1)
             eventScript.button2.interactable = true;
+        else
+            eventScript.button2.interactable = false;
+
 
     }
     void Answer3Update()
@@ -61,6 +66,9 @@ public class Throng : MonoBehaviour
 
         if (broker.C >= 3 && broker.P >= 2)
             eventScript.button3.interactable = true;
+        else
+            eventScript.button3.interactable = false;
+
     }
 
     public void Answer1()

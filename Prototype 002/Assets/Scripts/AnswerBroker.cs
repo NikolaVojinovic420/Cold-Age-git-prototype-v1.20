@@ -57,6 +57,10 @@ public class AnswerBroker : MonoBehaviour
 
     public void FinishingEventCard(GameObject card) //use on the end of specific event card on the end of answer method
     {
+        if(vigilantDeck.transform.childCount <= 0)
+        {
+            msgBoxGameOver.SetActive(true);
+        }
         PutEventInHistoryOrExhaust(card);
         Future.GetComponent<Future>().DrawNextEventCard();
     }

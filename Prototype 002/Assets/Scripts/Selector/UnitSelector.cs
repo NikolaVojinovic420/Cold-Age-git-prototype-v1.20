@@ -22,7 +22,7 @@ public class UnitSelector : MonoBehaviour
         float positionX = gameObject.transform.position.x;
         float positionY = gameObject.transform.position.y;
         
-        if(deck.transform.childCount <= 0) //if preparing is empty
+        if(deck.transform.childCount <= 0) //if deck is empty
         {
             gameObject.SetActive(false);
             Debug.Log($"{Time.time} {deck.name} is empty no draw.");

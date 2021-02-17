@@ -92,6 +92,8 @@ MonoBehaviour:
     type: 3}
   highbornTribute: {fileID: 7779133607592712541, guid: af2a58c98db9ea34d82cf070b42a84fd,
     type: 3}
+  warWithHighborns: {fileID: 8451847710546014992, guid: 0457ee358688fea4f9449619d94f16eb,
+    type: 3}
   newRecruits: {fileID: 8830311223665905183, guid: 5cea8f7a79b7a58478026bae81e2ceb1,
     type: 3}
   throng: {fileID: 5431767349052585290, guid: 966c1136aa954be439138d8272bf34da, type: 3}
@@ -3144,6 +3146,7 @@ MonoBehaviour:
   C: {fileID: 2010016495210630687}
   warning: {fileID: 3598843663063664603}
   warningtext: {fileID: 3724236047757037744}
+  broker: {fileID: 0}
 --- !u!1 &2010016495210630687
 GameObject:
   m_ObjectHideFlags: 0
@@ -4026,6 +4029,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Recovering: {fileID: 2010016494863156724}
+  broker: {fileID: 0}
   preparingDeck: {fileID: 2010016494053174020}
   vigilantDeck: {fileID: 2010016493985350581}
   ShuffleDeck: {fileID: 5057433707190890598}

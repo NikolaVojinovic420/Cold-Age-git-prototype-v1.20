@@ -18,6 +18,7 @@ public class TriggerEventBroker : MonoBehaviour
     public GameObject slaversAttention;
     public GameObject timeWasting;
     public GameObject highbornTribute;
+    public GameObject warWithHighborns;
     public GameObject newRecruits;
     public GameObject throng;
     public GameObject necromancerScout;
@@ -30,38 +31,38 @@ public class TriggerEventBroker : MonoBehaviour
     {
         if((vigilantDeck.childCount + markedDeck.childCount) >= vigilantDeck.GetComponentInParent<Vigilant>().maxHand - 1 && !CheckForExistingCopyInGame(slaversAttention) && broker.noise >= 8)
         {
-            Debug.Log($"{Time.time} <Slavers attention> inserted into History");
+            Debug.Log($"{Time.time} Vigilant = 9, Noise >= 8 <Slavers attention> inserted into History");
             Instantiate(slaversAttention, broker.HistoryDeck.transform);    //just put into history deck
         }
         if (!CheckForExistingCopyInGame(timeWasting) && !CheckPracticalInVigilant())
         {
-            Debug.Log($"{Time.time} You have no practical. <Low productivity> inserted into Future");
+            Debug.Log($"{Time.time} You have no practical. <Low productivity> inserted into History");
             Instantiate(timeWasting, broker.HistoryDeck.transform);
         }
-        if (!CheckForExistingCopyInGame(highbornTribute) && broker.noise >= 6)
+        if (!CheckForExistingCopyInGame(highbornTribute) && broker.noise >= 6 && !CheckForExistingCopyInGame(warWithHighborns))
         {
-            Debug.Log($"{Time.time} You have no practical. <Highborn demand tribute> inserted into Future");
+            Debug.Log($"{Time.time} Noise >= 6 <Highborn demand tribute> inserted into History");
             Instantiate(highbornTribute, broker.HistoryDeck.transform);
         }
         if (!CheckForExistingCopyInGame(newRecruits) && broker.noise >= 8 && (vigilantDeck.childCount + markedDeck.childCount) <= 3)
         {
-            Debug.Log($"{Time.time} You have no practical. <New recruits> inserted into Future");
+            Debug.Log($"{Time.time} Noise >= 8, Vigilant <= 3 <New recruits> inserted into History");
             Instantiate(newRecruits, broker.HistoryDeck.transform);
         }
         if (!CheckForExistingCopyInGame(throng) && broker.noise >= 10)
         {
-            Debug.Log($"{Time.time} You have no practical. <Throng!> inserted into Future");
+            Debug.Log($"{Time.time} Noise >= 10 <Throng!> inserted into History");
             Instantiate(throng, broker.HistoryDeck.transform);
         }
-        if (!CheckForExistingCopyInGame(necromancerScout) && broker.noise >= 10 && !necromancerScoutBool)
+        if (!CheckForExistingCopyInGame(necromancerScout) && broker.noise >= 5 && !necromancerScoutBool)
         {
             necromancerScoutBool = true;
-            Debug.Log($"{Time.time} You have no practical. <Necromancer's scouts spotted> inserted into Future");
+            Debug.Log($"{Time.time} Noise >= 5 <Necromancer's scouts spotted> inserted into History");
             Instantiate(necromancerScout, broker.HistoryDeck.transform);
         }
         if (!CheckForExistingCopyInGame(weExperimenting) && broker.noise >= 6)
         {
-            Debug.Log($"{Time.time} You have no practical. <New medical reserach> inserted into Future");
+            Debug.Log($"{Time.time} Noise > = 6 <New medical reserach> inserted into History");
             Instantiate(weExperimenting, broker.HistoryDeck.transform);
         }
 

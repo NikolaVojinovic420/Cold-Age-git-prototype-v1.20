@@ -12,11 +12,12 @@ public class SumVigilant : MonoBehaviour
     public GameObject C;
     public GameObject warning;
     public Text warningtext;
+    public AnswerBroker broker;
     int checkCount;
     // Start is called before the first frame update
     void Start()
     {
-        
+        broker = GameObject.FindWithTag("AnswerCard").GetComponent<AnswerBroker>();
     }
 
     // Update is called once per frame
@@ -24,7 +25,7 @@ public class SumVigilant : MonoBehaviour
     {
         CountAspects();
         Warnings();
-        if (Time.time % 0.4 == 0) //refreash
+        if (Time.time % 0.4 == 0) //refresh
             checkCount--;
 
     }
@@ -53,11 +54,11 @@ public class SumVigilant : MonoBehaviour
     //warnings
     void Warnings()
     {
-        BewareOfSlavers();
+        //BewareOfSlavers();   // maybe activate later on if we want
     }
     public void BewareOfSlavers()
     {
-        if (vigilantDeck.transform.childCount >= 10)
+        if (vigilantDeck.transform.childCount >= 9 && broker.noise >= 8)
         {
             warningtext.text = "Care for Slavers";
             warning.SetActive(true);
